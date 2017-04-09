@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PriceApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Prijzen Applicatie" Height="350" Width="525" Initialized="Window_Initialized">
     <Grid>
-        
+        <TextBlock x:Name="lblPrice150" Text="Cola / Jupiler / Hoegaerden / Spa / Vittel / Koffie / Soep € 1,50" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="43,18,0,0" VerticalAlignment="Top" Width="249" Height="44"/>
+        <TextBox x:Name="txtPrice150" HorizontalAlignment="Left" Height="23" Margin="353,15,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnIncreasePrice150" Content="+" HorizontalAlignment="Left" Margin="478,5,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnIncreasePrice150_Click"/>
+        <Button x:Name="btnDecreasePrice150" Content="-" HorizontalAlignment="Left" Margin="478,28,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnDecreasePrice150_Click"/>
+        <Label x:Name="lblPrice200" Content="Ice-Tea / Wijn / Carlsberg €2,00" HorizontalAlignment="Left" Margin="41,81,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPrice200" HorizontalAlignment="Left" Height="23" Margin="353,86,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnIncreasePrice200" Content="+" HorizontalAlignment="Left" Margin="477,70,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnIncreasePrice200_Click"/>
+        <Button x:Name="btnDecreasePrice200" Content="-" HorizontalAlignment="Left" Margin="477,95,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnDecreasePrice200_Click"/>
+        <Label x:Name="lblPrice250" Content="Aquarius / Leffe / Chimay / Duvel / La Chouffe €2,50" HorizontalAlignment="Left" Margin="40,154,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPrice250" HorizontalAlignment="Left" Height="23" Margin="352,157,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnIncreasePrice250" Content="+" HorizontalAlignment="Left" Margin="478,140,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnIncreasePrice250_Click"/>
+        <Button x:Name="btnDecreasePrice250" Content="-" HorizontalAlignment="Left" Margin="478,168,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnDecreasePrice250_Click"/>
+        <Label x:Name="lblPrice100" Content="Chips / Chocolade / Suikerwafel €1,00" HorizontalAlignment="Left" Margin="40,217,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPrice100" HorizontalAlignment="Left" Height="23" Margin="352,219,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnIncreasePrice100" Content="+" HorizontalAlignment="Left" Margin="477,203,0,0" VerticalAlignment="Top" Width="33" Height="18" RenderTransformOrigin="0.521,4.788" Click="btnIncreasePrice100_Click"/>
+        <Button x:Name="btnDecreasePrice100" Content="-" HorizontalAlignment="Left" Margin="477,230,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnDecreasePrice100_Click"/>
+        <Label x:Name="lblTotalePrijs" Content="Totale Prijs:" HorizontalAlignment="Left" Margin="39,269,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTotalePrijsAmount" HorizontalAlignment="Left" Margin="125,270,0,0" VerticalAlignment="Top" Width="132" Height="29"/>
+        <Button x:Name="btnAfrekenen" Content="Afrekenen" HorizontalAlignment="Left" Margin="341,272,0,0" VerticalAlignment="Top" Width="75" Click="btnAfrekenen_Click"/>
+
     </Grid>
 </Window>
