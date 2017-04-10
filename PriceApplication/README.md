@@ -1,2 +1,2 @@
 # PriceApplication
-WPF Application of a price list
+WPF Application simulating a bar
