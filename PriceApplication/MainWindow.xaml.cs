@@ -216,7 +216,6 @@ namespace PriceApplication
                 CalculateTotalPrice(korting);
                 txtKortingAmount.Text = string.Empty;
             }
-
         }
 
         private void EnkelvoudigeAfrekening(int aantalPersonenAanwezig)
@@ -225,7 +224,7 @@ namespace PriceApplication
             {
                 geselecteerdeKlant.Totaleprijs = geselecteerdeKlant.Totaleprijs - geselecteerdeKlant.TotaleprijsDividedByTwo;
                 geselecteerdeKlant.PrijsVanPersoonDieWegIs += geselecteerdeKlant.TotaleprijsDividedByTwo;
-                geselecteerdeKlant.KlantNaam = geselecteerdeKlant.KlantNaam.Contains("aanwezig") ? geselecteerdeKlant.KlantNaam.Replace('2','1') : geselecteerdeKlant.KlantNaam;
+                geselecteerdeKlant.KlantNaam = geselecteerdeKlant.KlantNaam.Contains("aanwezig") ? geselecteerdeKlant.KlantNaam.Replace('2', '1') : geselecteerdeKlant.KlantNaam;
             }
             else if (aantalPersonenAanwezig == 3)
             {
@@ -304,10 +303,10 @@ namespace PriceApplication
             geselecteerdeKlant.TotaleprijsDividedByTwo = geselecteerdeKlant.Totaleprijs / 2;
             geselecteerdeKlant.TotaleprijsDividedByThree = geselecteerdeKlant.Totaleprijs / 3;
             geselecteerdeKlant.TotaleprijsDividedByFour = geselecteerdeKlant.Totaleprijs / 4;
-            lblTotalePrijsAmount.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.Totaleprijs,2));
-            lblTotalePrijsAmountDividedByTwo.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.TotaleprijsDividedByTwo,2));
-            lblTotalePrijsAmountDividedByThree.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.TotaleprijsDividedByThree,2));
-            lblTotalePrijsAmountDividedyFour.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.TotaleprijsDividedByFour,2));
+            lblTotalePrijsAmount.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.Totaleprijs, 2));
+            lblTotalePrijsAmountDividedByTwo.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.TotaleprijsDividedByTwo, 2));
+            lblTotalePrijsAmountDividedByThree.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.TotaleprijsDividedByThree, 2));
+            lblTotalePrijsAmountDividedyFour.Content = string.Format("€ {0}", Math.Round(geselecteerdeKlant.TotaleprijsDividedByFour, 2));
         }
 
         private void Initialization()
