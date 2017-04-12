@@ -36,6 +36,7 @@ namespace PriceApplication.Classes
         public double TotaleprijsDividedByThree { get; set; }
         public double TotaleprijsDividedByFour { get; set; }
         public double PrijsVanPersoonDieWegIs { get; set; }
+        public bool isPloeg { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

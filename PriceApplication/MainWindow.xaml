@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PriceApplication"
         mc:Ignorable="d"
-        Title="Prijzen Applicatie" Height="686.667" Width="778.922" Initialized="Window_Initialized" ContentRendered="Window_ContentRendered">
+        Title="Prijzen Applicatie" Height="686.667" Width="1023.922" Initialized="Window_Initialized" ContentRendered="Window_ContentRendered">
     <Grid Height="467" VerticalAlignment="Top">
         <TextBlock x:Name="lblPrice150" Text="Cola / Jupiler / Hoegaerden / Spa / Vittel / Koffie / Soep € 1,50" TextWrapping="Wrap"  HorizontalAlignment="Left" Margin="279,78,0,0" VerticalAlignment="Top" Width="249" Height="44"/>
         <TextBox x:Name="txtPrice150" HorizontalAlignment="Left" Height="23" Margin="550,87,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="120"/>
@@ -25,7 +25,7 @@
         <Button x:Name="btnDecreasePrice100" Content="-" HorizontalAlignment="Left" Margin="645,283,0,0" VerticalAlignment="Top" Width="33" Height="18" Click="btnDecreasePrice100_Click"/>
         <Label x:Name="lblTotalePrijs" Content="Totale Prijs:" HorizontalAlignment="Left" Margin="299,319,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTotalePrijsAmount" HorizontalAlignment="Left" Margin="472,319,0,0" VerticalAlignment="Top" Width="132" Height="29"/>
-        <Button x:Name="btnAfrekenen" Content="Volledig Afrekenen" HorizontalAlignment="Left" Margin="304,466,0,-41" VerticalAlignment="Top" Width="119" Click="btnAfrekenen_Click" Height="42"/>
+        <Button x:Name="btnAfrekenen" Content="Volledig Afrekenen" HorizontalAlignment="Left" Margin="700,318,0,0" VerticalAlignment="Top" Width="272" Click="btnAfrekenen_Click" Height="42"/>
         <ListBox x:Name="listCustomers" HorizontalAlignment="Left" Height="391" Margin="9,5,0,0" VerticalAlignment="Top" Width="255" SelectionChanged="listCustomers_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -36,7 +36,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <TextBox x:Name="txtCustomerName" HorizontalAlignment="Left" Height="23" Margin="10,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164"/>
-        <Button x:Name="btnAddCustomer" Content="Klant toevoegen" HorizontalAlignment="Left" Margin="11,511,0,-64" VerticalAlignment="Top" Width="108" Click="btnAddCustomer_Click" RenderTransformOrigin="0.506,2.382"/>
+        <Button x:Name="btnAddCustomer" Content="Klant toevoegen" HorizontalAlignment="Left" Margin="11,580,0,-133" VerticalAlignment="Top" Width="108" Click="btnAddCustomer_Click" RenderTransformOrigin="0.506,2.382"/>
         <Label x:Name="lblTotalePrijsDividedByTwo" Content="Totale Prijs (Gedeeld door 2):" HorizontalAlignment="Left" Margin="298,354,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTotalePrijsDividedByThree" Content="Totale Prijs (Gedeeld door 3):" HorizontalAlignment="Left" Margin="298,387,0,0" VerticalAlignment="Top" />
         <Label x:Name="lblTotalePrijsDividedyFour" Content="Totale Prijs (Gedeeld door 4):" HorizontalAlignment="Left" Margin="297,423,0,0" VerticalAlignment="Top"/>
@@ -44,13 +44,20 @@
         <Label x:Name="lblTotalePrijsAmountDividedByThree" HorizontalAlignment="Left" Margin="474,387,0,0" VerticalAlignment="Top" Width="132" Height="29"/>
         <Label x:Name="lblTotalePrijsAmountDividedyFour" HorizontalAlignment="Left" Margin="474,423,0,0" VerticalAlignment="Top" Width="132" Height="29"/>
         <Label x:Name="lblCurrentCustomer" Content="Huidige Klant:" HorizontalAlignment="Left" Margin="274,21,0,0" VerticalAlignment="Top" Width="208"/>
-        <Label x:Name="lblCurrentCustomerName" FontWeight="Bold" HorizontalAlignment="Left" Margin="392,20,0,0" VerticalAlignment="Top" Width="208" Height="28"/>
-        <Button x:Name="btnEnkelvoudigeAfrekeningTweePersonen" Content="Enkelvoudige Afrekening (2 personen aanwezig)" HorizontalAlignment="Left" Margin="456,467,0,-41" VerticalAlignment="Top" Width="276" Click="btnEnkelvoudigeAfrekeningTweePersonen_Click" Height="41"/>
-        <Button x:Name="btnEnkelvoudigeAfrekeningDriePersonen" Content="Enkelvoudige Afrekening (3 personen aanwezig)" HorizontalAlignment="Left" Margin="303,517,0,-91" VerticalAlignment="Top" Width="276" Click="btnEnkelvoudigeAfrekeningDriePersonen_Click" Height="41"/>
-        <Button x:Name="btnEnkelvoudigeAfrekeningVierPersonen" Content="Enkelvoudige Afrekening (4 personen aanwezig)" HorizontalAlignment="Left" Margin="302,568,0,-142" VerticalAlignment="Top" Width="276" Click="btnEnkelvoudigeAfrekeningVierPersonen_Click" Height="41"/>
+        <Label x:Name="lblCurrentCustomerName" FontWeight="Bold" HorizontalAlignment="Left" Margin="392,20,0,0" VerticalAlignment="Top" Width="445" Height="28"/>
+        <Button x:Name="btnEnkelvoudigeAfrekeningTweePersonen" Content="Enkelvoudige Afrekening (2 personen aanwezig)" HorizontalAlignment="Left" Margin="698,368,0,0" VerticalAlignment="Top" Width="276" Click="btnEnkelvoudigeAfrekeningTweePersonen_Click" Height="41"/>
+        <Button x:Name="btnEnkelvoudigeAfrekeningDriePersonen" Content="Enkelvoudige Afrekening (3 personen aanwezig)" HorizontalAlignment="Left" Margin="699,417,0,0" VerticalAlignment="Top" Width="276" Click="btnEnkelvoudigeAfrekeningDriePersonen_Click" Height="41"/>
+        <Button x:Name="btnEnkelvoudigeAfrekeningVierPersonen" Content="Enkelvoudige Afrekening (4 personen aanwezig)" HorizontalAlignment="Left" Margin="698,472,0,-46" VerticalAlignment="Top" Width="276" Click="btnEnkelvoudigeAfrekeningVierPersonen_Click" Height="41"/>
         <CheckBox x:Name="chkIsPloeg" Content="Is een ploeg" HorizontalAlignment="Left" Margin="10,446,0,0" VerticalAlignment="Top" Width="223" Checked="chkIsPloeg_Checked" Unchecked="chkIsPloeg_Unchecked"/>
         <Label x:Name="lblAantalAanwezig" Content="Aantal Aanwezig:" HorizontalAlignment="Left" Height="30" Margin="5,469,0,-32" VerticalAlignment="Top" Width="104"/>
         <TextBox x:Name="txtAantalAanwezig" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="118,471,0,-27" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-
+        <TextBlock x:Name="lblKorting" HorizontalAlignment="Left" Margin="302,467,0,-20" TextWrapping="Wrap" Text="Korting:" VerticalAlignment="Top" Width="116" Height="20"/>
+        <TextBox x:Name="txtKortingAmount" HorizontalAlignment="Left" Height="23" Margin="468,464,0,-20" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
+        <Button x:Name="btnKorting" Content="Voer Korting uit" HorizontalAlignment="Left" Height="33" Margin="699,529,0,-95" VerticalAlignment="Top" Width="275" Click="btnKorting_Click"/>
+        <TextBlock x:Name="lblSpelersNamen" HorizontalAlignment="Left" Margin="11,505,0,-63" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="25"><Run Text="Namen Spelers (voor ploeg):"/></TextBlock>
+        <TextBox x:Name="txtSpelersNamen" HorizontalAlignment="Left" Height="23" Margin="10,531,0,-87" TextWrapping="Wrap"  VerticalAlignment="Top" Width="254"/>
+        <Button x:Name="btnWijzigSpelersNamen" Content="Wijzig Spelersnamen" HorizontalAlignment="Left" Height="31" Margin="699,578,0,-142" VerticalAlignment="Top" Width="274" Click="btnWijzigSpelersNamen_Click"/>
+        <TextBlock x:Name="lblGewijzigdeSpelersNamen" HorizontalAlignment="Left" Margin="302,511,0,-76" TextWrapping="Wrap" Text="Gewijzigde Spelersnamen (voor ploeg):" VerticalAlignment="Top" Width="164"/>
+        <TextBox x:Name="txtGewijzigdeSpelersNamen" HorizontalAlignment="Left" Height="23" Margin="468,513,0,-69" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
     </Grid>
 </Window>

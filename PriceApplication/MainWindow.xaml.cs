@@ -38,8 +38,9 @@ namespace PriceApplication
             {
                 Klant klant = new Klant()
                 {
-                    KlantNaam = (bool)chkIsPloeg.IsChecked ? $"{txtCustomerName.Text} ({txtAantalAanwezig.Text} personen aanwezig)" : $"{txtCustomerName.Text}",
-                    KlantID = klanten.Count + 1
+                    KlantNaam = (bool)chkIsPloeg.IsChecked ? $"{txtCustomerName.Text} ({txtAantalAanwezig.Text} personen aanwezig) [{txtSpelersNamen.Text}]" : $"{txtCustomerName.Text}",
+                    KlantID = klanten.Count + 1,
+                    isPloeg = (bool)chkIsPloeg.IsChecked
                 };
                 klanten.Add(klant);
                 geselecteerdeKlant = klanten.OrderBy(x => x.KlantID).Last();
@@ -54,7 +55,7 @@ namespace PriceApplication
         {
             geselecteerdeKlant.Aantal150Consumpties++;
             txtPrice150.Text = geselecteerdeKlant.Aantal150Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnDecreasePrice150_Click(object sender, RoutedEventArgs e)
@@ -64,14 +65,14 @@ namespace PriceApplication
                 geselecteerdeKlant.Aantal150Consumpties--;
             }
             txtPrice150.Text = geselecteerdeKlant.Aantal150Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnIncreasePrice200_Click(object sender, RoutedEventArgs e)
         {
             geselecteerdeKlant.Aantal200Consumpties++;
             txtPrice200.Text = geselecteerdeKlant.Aantal200Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnDecreasePrice200_Click(object sender, RoutedEventArgs e)
@@ -81,14 +82,14 @@ namespace PriceApplication
                 geselecteerdeKlant.Aantal200Consumpties--;
             }
             txtPrice200.Text = geselecteerdeKlant.Aantal200Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnIncreasePrice250_Click(object sender, RoutedEventArgs e)
         {
             geselecteerdeKlant.Aantal250Consumpties++;
             txtPrice250.Text = geselecteerdeKlant.Aantal250Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnDecreasePrice250_Click(object sender, RoutedEventArgs e)
@@ -98,14 +99,14 @@ namespace PriceApplication
                 geselecteerdeKlant.Aantal250Consumpties--;
             }
             txtPrice250.Text = geselecteerdeKlant.Aantal250Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnIncreasePrice100_Click(object sender, RoutedEventArgs e)
         {
             geselecteerdeKlant.Aantal100Consumpties++;
             txtPrice100.Text = geselecteerdeKlant.Aantal100Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnDecreasePrice100_Click(object sender, RoutedEventArgs e)
@@ -115,7 +116,7 @@ namespace PriceApplication
                 geselecteerdeKlant.Aantal100Consumpties--;
             }
             txtPrice100.Text = geselecteerdeKlant.Aantal100Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         private void btnAfrekenen_Click(object sender, RoutedEventArgs e)
@@ -168,17 +169,55 @@ namespace PriceApplication
         private void chkIsPloeg_Checked(object sender, RoutedEventArgs e)
         {
             txtAantalAanwezig.IsEnabled = true;
+            txtSpelersNamen.IsEnabled = true;
         }
 
         private void chkIsPloeg_Unchecked(object sender, RoutedEventArgs e)
         {
             txtAantalAanwezig.Text = string.Empty;
             txtAantalAanwezig.IsEnabled = false;
+            txtSpelersNamen.Text = string.Empty;
+            txtSpelersNamen.IsEnabled = false;
+        }
+
+        private void btnKorting_Click(object sender, RoutedEventArgs e)
+        {
+            ExecuteKorting();
+        }
+
+        private void btnWijzigSpelersNamen_Click(object sender, RoutedEventArgs e)
+        {
+            WijzigSpelersNamen();
         }
 
         #endregion Events
 
         #region Helper Methods
+
+        private void WijzigSpelersNamen()
+        {
+            if (geselecteerdeKlant.isPloeg && !string.IsNullOrEmpty(txtGewijzigdeSpelersNamen.Text))
+            {
+                int startIndexStringToRemove = geselecteerdeKlant.KlantNaam.IndexOf("[");
+                int endIndexStringToRemove = geselecteerdeKlant.KlantNaam.IndexOf("]");
+                geselecteerdeKlant.KlantNaam = geselecteerdeKlant.KlantNaam.Remove(startIndexStringToRemove, (endIndexStringToRemove - startIndexStringToRemove) + 1);
+                geselecteerdeKlant.KlantNaam = $"{geselecteerdeKlant.KlantNaam}[{txtGewijzigdeSpelersNamen.Text}]";
+                lblCurrentCustomerName.Content = geselecteerdeKlant.KlantNaam;
+                listCustomers.ItemsSource = klanten;
+            }
+            txtGewijzigdeSpelersNamen.Text = string.Empty;
+        }
+
+        private void ExecuteKorting()
+        {
+            if (!string.IsNullOrEmpty(txtKortingAmount.Text))
+            {
+                double korting = Convert.ToDouble(txtKortingAmount.Text);
+                CalculateTotalPrice(korting);
+                txtKortingAmount.Text = string.Empty;
+            }
+
+        }
 
         private void EnkelvoudigeAfrekening(int aantalPersonenAanwezig)
         {
@@ -217,6 +256,8 @@ namespace PriceApplication
             btnEnkelvoudigeAfrekeningTweePersonen.IsEnabled = isEnabled;
             btnEnkelvoudigeAfrekeningDriePersonen.IsEnabled = isEnabled;
             btnEnkelvoudigeAfrekeningVierPersonen.IsEnabled = isEnabled;
+            btnKorting.IsEnabled = isEnabled;
+            btnWijzigSpelersNamen.IsEnabled = isEnabled;
         }
 
         private void Reset()
@@ -240,10 +281,21 @@ namespace PriceApplication
             }
         }
 
-        private void CalculateTotalPrice()
+        private void CalculateTotalPrice(double korting)
         {
-            geselecteerdeKlant.Totaleprijs = (geselecteerdeKlant.Aantal100Consumpties * 1) + (geselecteerdeKlant.Aantal150Consumpties * 1.5)
+            geselecteerdeKlant.PrijsVanPersoonDieWegIs += korting;
+            double totalePrijs = (geselecteerdeKlant.Aantal100Consumpties * 1) + (geselecteerdeKlant.Aantal150Consumpties * 1.5)
                                              + (geselecteerdeKlant.Aantal200Consumpties * 2) + (geselecteerdeKlant.Aantal250Consumpties * 2.5) - geselecteerdeKlant.PrijsVanPersoonDieWegIs;
+            if (totalePrijs < 0)
+            {
+                geselecteerdeKlant.PrijsVanPersoonDieWegIs -= korting;
+                geselecteerdeKlant.Totaleprijs = totalePrijs + korting;
+            }
+            else
+            {
+                geselecteerdeKlant.Totaleprijs = totalePrijs;
+            }
+
             CalculateCustomPrices();
         }
 
@@ -271,7 +323,7 @@ namespace PriceApplication
             txtPrice150.Text = geselecteerdeKlant.Aantal150Consumpties.ToString();
             txtPrice200.Text = geselecteerdeKlant.Aantal200Consumpties.ToString();
             txtPrice250.Text = geselecteerdeKlant.Aantal250Consumpties.ToString();
-            CalculateTotalPrice();
+            CalculateTotalPrice(0);
         }
 
         #endregion Helper Methods
