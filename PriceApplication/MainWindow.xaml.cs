@@ -1,6 +1,7 @@
 ﻿using PriceApplication.Classes;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,7 @@ namespace PriceApplication
         public MainWindow()
         {
             InitializeComponent();
+            Closing += OnWindowClosing;
         }
 
         #region Events
@@ -188,6 +190,14 @@ namespace PriceApplication
         private void btnWijzigSpelersNamen_Click(object sender, RoutedEventArgs e)
         {
             WijzigSpelersNamen();
+        }
+
+        private void OnWindowClosing(object sender, CancelEventArgs cancelEventArgs)
+        {
+            if (MessageBox.Show(this, "Bent u zeker dat u deze applicatie wilt sluiten? Alle gegevens zullen verloren zijn", "Waarschuwing", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+            {
+                cancelEventArgs.Cancel = true;
+            }
         }
 
         #endregion Events
