@@ -194,7 +194,7 @@ namespace PriceApplication
 
         private void OnWindowClosing(object sender, CancelEventArgs cancelEventArgs)
         {
-            if (MessageBox.Show(this, "Bent u zeker dat u deze applicatie wilt sluiten? Alle gegevens zullen verloren zijn", "Waarschuwing", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+            if (MessageBox.Show(this, "Bent u zeker dat u deze applicatie wilt sluiten? Alle gegevens zullen verloren zijn.", "Waarschuwing", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
             {
                 cancelEventArgs.Cancel = true;
             }
